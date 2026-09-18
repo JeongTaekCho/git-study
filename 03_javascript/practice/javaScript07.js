@@ -14,6 +14,7 @@
 - 호출한 쪽에서 반환값을 출력합니다.
 - 외부 변수에 계산 결과를 저장하는 방식은 사용하지 않습니다.
 
+
 호출 → 예상 반환값
 getOrderTotal(3000, 2) → 6000
 getOrderTotal(5000, 1) → 5000
@@ -38,3 +39,9 @@ console.log(getOrderTotal(3000, 2));
 console.log(getOrderTotal(5000, 1));
 console.log(getOrderTotal(3000, 0));
 console.log(getOrderTotal(3000, -2));
+
+const test = () => {
+    return "test";
+};
+
+console.log(test());
