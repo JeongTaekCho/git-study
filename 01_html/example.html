@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ohgiraffers Menu Manager</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                text-decoration: none;
+            }
+
+            ul,
+            ol {
+                list-style: none;
+            }
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            body {
+                background-color: rgb(240, 226, 240);
+            }
+
+            #wrap {
+                width: 1200px;
+                margin: 40px auto;
+                background-color: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            }
+
+            header {
+                padding: 20px 0;
+                border-bottom: 3px solid rgba(202, 185, 185, 0.774);
+            }
+
+            .title {
+                font-size: 40px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .sub-title {
+                font-size: 18px;
+                text-align: center;
+                color: gray;
+                margin-bottom: 20px;
+            }
+
+            .navigation {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .navigation ul {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .navigation ul li > a {
+                display: block;
+                padding: 12px 20px;
+                background-color: rgb(253, 66, 181);
+                color: white;
+                border-radius: 8px;
+                font-size: 20px;
+            }
+
+            .navigation ul li > a:hover {
+                opacity: 0.7;
+                transition: 0.3s;
+            }
+
+            #main-section {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                margin-top: 30px;
+            }
+
+            #main-section section {
+                width: 100%;
+                padding: 30px;
+                border: 1px solid rgb(253, 232, 232);
+                border-radius: 8px;
+                background-color: rgba(255, 209, 255, 0.1);
+            }
+
+            #main-section section h2 {
+                font-size: 28px;
+                padding-bottom: 15px;
+                border-bottom: 3px solid rgb(253, 213, 220);
+                margin-bottom: 30px;
+            }
+
+            #intro p {
+                font-size: 20px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+            #category ul {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
+
+            #category ul li {
+                padding: 10px 15px;
+                border-radius: 30px;
+                background-color: rgb(241, 162, 195);
+                color: white;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            #representative-menu img {
+                width: 50%;
+                display: block;
+                margin: 0 auto;
+                border-radius: 12px;
+                border: 1px solid pink;
+            }
+
+            #representative-menu figcaption {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                color: rgb(255, 51, 153);
+            }
+
+            #menu-list caption {
+                font-size: 20px;
+                font-weight: 500;
+                color: black;
+                margin-bottom: 10px;
+            }
+
+            #menu-list table {
+                width: 100%;
+            }
+
+            #menu-list table th,
+            td {
+                padding: 15px;
+            }
+            #menu-list table th {
+                font-size: 20px;
+                background-color: rgb(252, 142, 193);
+                color: white;
+            }
+            #menu-list table td {
+                text-align: center;
+                font-size: 20px;
+                font-weight: 5400;
+                background-color: white;
+            }
+
+            #menu-list table .ing {
+                color: green;
+                font-weight: 700;
+            }
+
+            #menu-list table .sold-out {
+                color: red;
+                font-weight: 700;
+            }
+
+            #menu-register fieldset {
+                padding: 20px;
+                border-radius: 12px;
+                border: 2px solid pink;
+            }
+
+            #menu-register fieldset legend {
+                font-size: 18px;
+                font-weight: 600;
+                color: black;
+                padding: 0 10px;
+            }
+
+            .input-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .input-box {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .input-box .text-input,
+            #menu-category {
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid rgb(243, 226, 226);
+                outline: none;
+                font-size: 16px;
+            }
+
+            .input-box.status {
+                display: flex;
+                gap: 20px;
+            }
+
+            .input-box label {
+                font-weight: 500;
+            }
+
+            .input-box.status > div {
+                display: flex;
+                gap: 30px;
+            }
+
+            .input-box textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid rgb(243, 226, 226);
+                border-radius: 8px;
+                font-size: 16px;
+                resize: none;
+            }
+
+            .form-button-box {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .form-button-box button {
+                padding: 12px 20px;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+                border: none;
+                color: white;
+            }
+
+            .form-button-box button:hover {
+                opacity: 0.8;
+                transition: 0.2s;
+            }
+
+            .form-button-box button:active {
+                font-weight: 600;
+                transition: 0s;
+            }
+
+            .submit-button {
+                background-color: rgb(28, 197, 28);
+            }
+
+            .reset-button {
+                background-color: rgb(134, 128, 128);
+            }
+
+            .link-section p {
+                font-size: 20px;
+            }
+
+            .link-section p > a {
+                font-weight: 700;
+            }
+
+            footer {
+                width: 100%;
+                padding-top: 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+                border-top: 3px solid pink;
+            }
+
+            footer div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                font-size: 16px;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <header>
+                <h1 class="title">Ohgiraffers Menu Manager</h1>
+                <p class="sub-title">메뉴를 등록하고, 조회하고, 관리할 수 있는 메뉴 관리 시스템입니다.</p>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="#intro">서비스 소개</a></li>
+                        <li><a href="#category">카테고리</a></li>
+                        <li><a href="#menu-list">메뉴 목록</a></li>
+                        <li><a href="#menu-register">메뉴 등록</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main id="main-section">
+                <section id="intro">
+                    <h2>서비스 소개</h2>
+                    <p>
+                        <strong>Ohgiraffers Menu Manager</strong>는 음식점의 메뉴 정보를 관리하기 위한 페이지입니다.
+                        <br />메뉴명, 가격, 카테고리, 판매 상태를 한눈에 확인할 수 있습니다.
+                    </p>
+                    <p>이번 CSS 과제에서는 <mark>화면의 스타일</mark>을 적용하는 것에 집중합니다.</p>
+                </section>
+                <section id="category">
+                    <h2>카테고리 목록</h2>
+                    <ul>
+                        <li>한식</li>
+                        <li>중식</li>
+                        <li>일식</li>
+                        <li>양식</li>
+                        <li>디저트</li>
+                        <li>음료</li>
+                    </ul>
+                </section>
+                <section id="representative-menu">
+                    <h2>대표 메뉴</h2>
+                    <figure>
+                        <img src="sample/image/chicken.jpg" alt="치킨" width="200px" />
+                        <figcaption>오늘의 대표 메뉴 이미지입니다.</figcaption>
+                    </figure>
+                </section>
+                <section id="menu-list">
+                    <h2>메뉴 목록</h2>
+                    <table>
+                        <caption>
+                            등록된 메뉴 목록
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>메뉴 번호</th>
+                                <th>메뉴명</th>
+                                <th>가격</th>
+                                <th>카테고리</th>
+                                <th>판매 상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>한우딸기국밥</td>
+                                <td>15,000원</td>
+                                <td>한식</td>
+                                <td class="ing">판매중</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>참치맛아이스크림</td>
+                                <td>8,000원</td>
+                                <td>디저트</td>
+                                <td class="ing">판매중</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>바닐라김치라떼</td>
+                                <td>6,500원</td>
+                                <td>음료</td>
+                                <td class="sold-out">품절</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>매운초코파스타</td>
+                                <td>12,000원</td>
+                                <td>양식</td>
+                                <td class="ing">판매중</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>치킨</td>
+                                <td>18,000원</td>
+                                <td>한식</td>
+                                <td class="ing">판매중</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section id="menu-register">
+                    <h2>메뉴 등록</h2>
+                    <form action="#" method="post">
+                        <fieldset>
+                            <legend>신규 메뉴 정보</legend>
+                            <div class="input-container">
+                                <div class="input-box">
+                                    <label for="menu-name">메뉴명</label>
+                                    <input
+                                        type="text"
+                                        id="menu-name"
+                                        name="menuName"
+                                        placeholder="메뉴명을 입력하세요"
+                                        required
+                                        class="text-input"
+                                    />
+                                </div>
+                                <div class="input-box">
+                                    <label for="menu-price">가격</label>
+                                    <input
+                                        type="number"
+                                        id="menu-price"
+                                        name="menuPrice"
+                                        placeholder="가격을 입력하세요"
+                                        required
+                                        class="text-input"
+                                    />
+                                </div>
+                                <div class="input-box">
+                                    <label for="menu-category">카테고리</label>
+                                    <select id="menu-category" name="menuCategory" required>
+                                        <option value="">카테고리 선택</option>
+                                        <option value="korean-food">한식</option>
+                                        <option value="chinese-food">중식</option>
+                                        <option value="japanese-food">일식</option>
+                                        <option value="western-food">양식</option>
+                                        <option value="dessert">디저트</option>
+                                        <option value="drink">음료</option>
+                                    </select>
+                                </div>
+                                <div class="input-box status">
+                                    <p>판매 상태</p>
+                                    <div>
+                                        <div>
+                                            <input
+                                                type="radio"
+                                                id="menu-status-selling"
+                                                name="menuStatus"
+                                                value="selling"
+                                            />
+                                            <label for="menu-status-selling">판매중</label>
+                                        </div>
+                                        <div>
+                                            <input
+                                                type="radio"
+                                                id="menu-status-sold-out"
+                                                name="menuStatus"
+                                                value="sold-out"
+                                            />
+                                            <label for="menu-status-sold-out">품절</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-box">
+                                    <label for="menu-description">메뉴 설명</label>
+                                    <div>
+                                        <textarea
+                                            id="menu-description"
+                                            name="menuDescription"
+                                            rows="5"
+                                            cols="50"
+                                            placeholder="메뉴 설명을 입력하세요"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-button-box">
+                                <button type="submit" class="submit-button">메뉴 등록</button>
+                                <button type="reset" class="reset-button">다시 작성</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+                <section class="link-section">
+                    <h2>관련 링크</h2>
+                    <p>
+                        프로젝트 코드는 <a href="https://github.com/JeongTaekCho" target="_blank">Github</a> 에서
+                        관리합니다.
+                    </p>
+                </section>
+            </main>
+            <footer>
+                <div>
+                    <p>작성자: 조정택</p>
+                    <p>풀스택 개발자 과정 HTML 과제</p>
+                    <p>작성일: 2026-09-03</p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

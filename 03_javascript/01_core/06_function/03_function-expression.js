@@ -1,0 +1,19 @@
+// 함수 표현식 - 값으로 담기
+// console.log(hi("호이스팅 판다")); // 함수 표현식은 호이스팅 X
+
+const hi = function (name) {
+    return `${name}님 안녕하세요!`;
+};
+
+console.log(hi("판다"));
+
+// 함수 선언문은 코드 실행 전에 먼저 준비되기 때문에 선언 위치보다 위에서 참조가능
+// 함수 선언문이 코드의 가장 위로 올라간 것처럼 보이는 동작을 호이스팅이라고 한다.
+console.log(hello("호이스팅 쪼롱"));
+
+// 함수 선언문의 호이스팅
+function hello(name) {
+    return `${name} 안녕?`;
+}
+
+console.log(hello("쪼롱"));
