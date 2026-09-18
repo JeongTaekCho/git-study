@@ -41,6 +41,7 @@ console.log(getOrderTotal(3000, 0));
 console.log(getOrderTotal(3000, -2));
 
 const test = () => {
+    console.log("~~~~~~~~~~~~~~~~~~~");
     return "test";
 };
 
