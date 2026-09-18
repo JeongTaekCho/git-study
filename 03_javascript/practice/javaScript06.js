@@ -49,5 +49,6 @@ console.log(`판매 가능 ${product.isAcailable}`);
 console.log(`삭제 후 카테고리: ${product.category}`);
 
 const login = () => {
+    console.log('로그인 기능');
     return '로그인 기능 개발';
 };
