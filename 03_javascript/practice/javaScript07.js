@@ -45,4 +45,8 @@ const test = () => {
     return "test";
 };
 
+const test2 = () => {
+    return "test2";
+};
+
 console.log(test());
