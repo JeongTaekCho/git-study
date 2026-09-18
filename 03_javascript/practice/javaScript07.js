@@ -46,6 +46,7 @@ const test = () => {
 };
 
 const test2 = () => {
+    console.log("코드 리뷰 받은 내용 수정");
     return "test2";
 };
 
