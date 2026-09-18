@@ -28,16 +28,16 @@
 
 */
 
-// 문제 6 풀이
+// 문제 6 풀이`
 
 const product = {
-    name: "노트",
+    name: '노트',
     price: 3000,
     stock: 10,
-    category: "문구",
+    category: '문구',
 };
 
-const key = product["price"];
+const key = product['price'];
 product.stock -= 2;
 product.isAcailable = product.stock > 0;
 
@@ -47,3 +47,7 @@ console.log(`가격: ${product.price}`);
 console.log(`남은 재고: ${product.stock}`);
 console.log(`판매 가능 ${product.isAcailable}`);
 console.log(`삭제 후 카테고리: ${product.category}`);
+
+const login = () => {
+    return '로그인 기능 개발';
+};
